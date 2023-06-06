@@ -20,8 +20,8 @@ While this screenshot does a poor job showing you anything color related due to 
 "Format." DayJS, day.js.org/docs/en/display/format. Accessed 3 Jun. 2023.
 "JQuery Syntax." W3 Schools, www.w3schools.com/jquery/jquery_syntax.asp. Accessed 3 Jun. 2023.
 "HTML i Tag." W3 Schools, www.w3schools.com/tags/tag_i.asp. Accessed 3 Jun. 2023.
-"Containers." Bootstrap, getbootstrap.com/docs/5.3/layout/containers/. Accessed 3 Jun. 2023.
-"Columns." Bootstrap, getbootstrap.com/docs/5.3/layout/columns/. Accessed 3 Jun. 2023.
+"Containers." Bootstrap, www.getbootstrap.com/docs/5.3/layout/containers/. Accessed 3 Jun. 2023.
+"Columns." Bootstrap, www.getbootstrap.com/docs/5.3/layout/columns/. Accessed 3 Jun. 2023.
 
 ## License
 
