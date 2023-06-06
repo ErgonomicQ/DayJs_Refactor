@@ -47,8 +47,15 @@ $(function () {
       var textareaValue = $parent.find("textarea").val();
       var hourId = $parent.find("textarea").attr("data-hour"); // Get the hour from the data attribute
       localStorage.setItem("hour-" + hourId, textareaValue); // Save using the hour from data attribute
+      $("#saveConfirmation").text("Event saved successfully!"); // Display confirmation message
+    
+
+    setTimeout(function () {
+      $("#saveConfirmation").text(""); // Clear the confirmation message
+    }, 4000);
     });
 
+    
     // Append elements to the time block
     $timeBlock.append($hour, $textarea, $saveButton);
 
