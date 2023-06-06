@@ -1,5 +1,9 @@
 $(function () {
   var currentHour = dayjs().hour();
+  var currentDate = dayjs().format("dddd, MMMM D, YYYY");
+
+  // Display current date in the header
+  $("#currentDay").text(currentDate);
 
   // Generate time blocks for standard business hours
   for (var hour = 9; hour <= 17; hour++) {
@@ -22,12 +26,13 @@ $(function () {
     // Create textarea element
     var $textarea = $("<textarea>")
       .addClass("col-8 col-md-10 description")
-      .attr("rows", 3);
+      .attr("rows", 3)
+      .attr("data-hour", hour); // Add data attribute to identify the hour
 
-    // Set textarea value based on saved data from localStorage
-    var savedData = localStorage.getItem("hour-" + hour);
-    if (savedData) {
-      $textarea.val(savedData);
+    // Get saved event text from localStorage for this time block
+    var savedEvent = localStorage.getItem("hour-" + hour);
+    if (savedEvent) {
+      $textarea.val(savedEvent);
     }
 
     // Create save button
@@ -40,8 +45,8 @@ $(function () {
     $saveButton.on("click", function () {
       var $parent = $(this).parent();
       var textareaValue = $parent.find("textarea").val();
-      var hourId = $parent.attr("id");
-      localStorage.setItem(hourId, textareaValue);
+      var hourId = $parent.find("textarea").attr("data-hour"); // Get the hour from the data attribute
+      localStorage.setItem("hour-" + hourId, textareaValue); // Save using the hour from data attribute
     });
 
     // Append elements to the time block
@@ -50,4 +55,18 @@ $(function () {
     // Append time block to the container
     $(".container-fluid").append($timeBlock);
   }
+
+  // Function to retrieve saved values from local storage and update text areas
+  function updateTextAreas() {
+    $(".description").each(function () {
+      var hourId = $(this).attr("data-hour"); // Get the hour from the data attribute
+      var savedEvent = localStorage.getItem("hour-" + hourId);
+      if (savedEvent) {
+        $(this).val(savedEvent);
+      }
+    });
+  }
+
+  // Call the function to update text areas on page load
+  updateTextAreas();
 });
